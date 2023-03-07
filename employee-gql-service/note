@@ -1,0 +1,29 @@
+graphql dependancy
+    npm i @nestjs/graphql @nestjs/apollo graphql apollo-server-express
+
+postgarde 
+    npm install --save @nestjs/typeorm typeorm pg
+
+generate module 
+    nest g module employee 
+    nest g s employee --no-spec = this is to remove test file
+    nest g r employee --no-spec = this is to remove test file
+
+    for whole in on - nest g res project --no-spec
+    
+        then we are creating a class Employee file.
+
+import graphQL
+    -copy to the module code is on the documentation.
+    -put anotations to the entity. @objectType() and @field()
+    -create methods in resolvers @Query 
+
+import postgreSQL
+    -copy to the app.module typeORM and configure.
+    -need to put @entity to entities.
+
+Mutation 
+    -this is use for creating. 
+     so we need to add @mutation anotation and show arrow function.
+
+----------------------------------------------------------

@@ -1,0 +1,81 @@
+const { isDate, identity } = require("lodash")
+
+intialize project 
+npm init 
+---------------------------
+appollo serever and libraries
+npm i apollo-server graphql 
+-----------------------------------
+npm start ekak gahanna issella packge json eke script eke start ekata index.js eka 
+danna one.like below
+
+ "start": "nodemon index.js"
+
+------------------------------------
+
+3 thing about graph ql 
+ 1.what we query 
+ 2.defenition of type 
+ 3.data
+-------------------------------------
+resolver - this is use to fetch data .
+
+const resolvers = {
+    Query: {
+        employees: () => {
+            return [
+                {
+                    firstName: "pamal",
+                    message:"this is message"
+                }
+            ]
+        }
+    }
+}
+
+we can send the any fields but the thing is type Employee must 
+contain that field. the field message is missing so it is not
+reflect in graphQL
+
+---------------------------
+data source are bellow and how we use to manupulate these data
+    1. through file
+    2.through dB
+    3.throug rest api
+    4.through graph ql
+
+--------------------------------
+data source node module eka use karanawa 
+npm i apollo-datasource
+
+------------------------
+getDataFromDataSource.js file eke tinawa hariyatama 
+data ganna widiha data source ekakin.
+
+apita filtering part eka karanna lodash eka use karanna puluwan.Employee
+npm i lodash
+
+------------------------
+Deal with multiple source data
+
+------------------------------
+nested resolver 
+    senario - nedd employee along with the project. 
+        - employee db does not have project id 
+        - project rest end point have employee id 
+    
+    to do that we 
+        1. add projects to employee
+        2. need to write a resolver
+
+        Employee: 
+        {
+            async projects(employee,args,{dataSources},info) {
+                let projects = await dataSources.projectService.getProjects()
+                let workingProjects = projects.filter(project => {
+                    return project.employee.includes(employee.id)
+                })
+                return workingProjects;
+            }
+        }
+    meke id ekata enne employee eke tina id eka.
